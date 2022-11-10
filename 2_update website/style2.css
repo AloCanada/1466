@@ -1,17 +1,10 @@
-@font-face {
-    font-family: 'serpentineboldoblique';
-    src: url('Serpentine BoldOblique.ttf') format('woff2'),
-         url('Serpentine BoldOblique.ttf') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 body {
     background: url("updatebackround1.png");
     position: flex;
     height: 100%;
     background-color: #141411;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
     width: min(90%, 1200px);
     margin: auto;
 }
@@ -22,17 +15,22 @@ header {
     margin: 20px 0px;
     text-align: center;
 }
+#line1 {
+    border-top: 10px solid blue;
+    margin: 4px;
+} 
+#line2 {
+    border-top: 10px solid dodgerblue; 
+    width:80%;
+    margin: 4px;
+} 
+#line3 {
+    border-top: 10px solid DeepSkyBlue;
+    width: 60%;
+    margin: 4px;
+} 
 
 
-
-
-/*----ESIMENE KAST----*/
-.item-1 {
-    background-color: #e79e03ff;
-    border-radius: 6px;
-    margin: 10px;
-    flex: 30%;
-}
 section {
     font-family: Arial;
     font-weight: bold;
@@ -44,36 +42,34 @@ section {
         flex-direction: column;
     }
 }
-
-.pealkiri {
-    font-size: 3vw;
-    font-weight: bold;
-    margin: 10px auto;
-    text-align: center;
-}
-.vis-punane {
-    background-color: #ff2f01ff;
-    margin: 0px;
-    padding: 5px calc(7%);
-}
-.punase-text {
-    margin: 10px 0px;
-}
-.teine_osa {
-    padding: 5px calc(7%);
-}
-/*----TEINE KAST----*/
-.item-2 {
-    background-color: #434448ff;
-    border-radius: 6px;
+/*----KASTid----*/
+.items {
     margin: 10px;
     flex: 30%;
 }
-
+.image {
+    width: 100%;
+}
 /*----KOLMAS KAST----*/
-.item-3 {
-    background-color: #e79e03ff;
-    border-radius: 6px;
-    margin: 10px;
-    flex: 30%;
+.up {
+    background-color: dimgrey;
+    height: 50%;
+    margin: 0%;
+}
+.down {
+    background-color: dimgrey;
+    height: 50%;
+    margin: 0%;
+}
+.genres {
+    word-spacing: 4em;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    font: arial;
+}
+@media (max-width: 700px) 
+    .genres {   
+        word-spacing: 1em;
+    }
 }
