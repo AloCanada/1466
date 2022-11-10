@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lihtne</title>
+</head>
+
+<style>
+    body{
+        background-color: black;
+        font-family: Arial;
+    }
+    div {
+        background-image: linear-gradient(
+            blueviolet, red);
+        font-size: xx-large;
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+        width: min(40%, 300px);
+        margin: 20px auto;
+    }
+</style>
+<body>
+    <div>TEST KAST #1</div>
+</body>
+ 

@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'serpentineboldoblique';
+    src: url('Serpentine BoldOblique.ttf') format('woff2'),
+         url('Serpentine BoldOblique.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    background: url("updatebackround1.png");
+    position: flex;
+    height: 100%;
+    background-color: #141411;
+    width: min(90%, 1200px);
+    margin: auto;
+}
+header {
+    font-family: 'serpentineboldoblique', arial, sans-serif;
+    font-size: 80px;
+    color: #ffffff;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+
+
+
+/*----ESIMENE KAST----*/
+.item-1 {
+    background-color: #e79e03ff;
+    border-radius: 6px;
+    margin: 10px;
+    flex: 30%;
+}
+section {
+    font-family: Arial;
+    font-weight: bold;
+    display: flex;
+}
+
+@media (max-width: 700px) {
+    section {   
+        flex-direction: column;
+    }
+}
+
+.pealkiri {
+    font-size: 3vw;
+    font-weight: bold;
+    margin: 10px auto;
+    text-align: center;
+}
+.vis-punane {
+    background-color: #ff2f01ff;
+    margin: 0px;
+    padding: 5px calc(7%);
+}
+.punase-text {
+    margin: 10px 0px;
+}
+.teine_osa {
+    padding: 5px calc(7%);
+}
+/*----TEINE KAST----*/
+.item-2 {
+    background-color: #434448ff;
+    border-radius: 6px;
+    margin: 10px;
+    flex: 30%;
+}
+
+/*----KOLMAS KAST----*/
+.item-3 {
+    background-color: #e79e03ff;
+    border-radius: 6px;
+    margin: 10px;
+    flex: 30%;
+}
