@@ -8,6 +8,17 @@
     width: min(90%, 1200px);
     margin: auto;
 }
+#hidden-button {
+    position: absolute;
+    transform: translateY(-120%);
+    transition: transform 325ms ease-in;
+    background-color: #000000;
+    padding: 0.5rem;
+    width: 66%;
+    border-radius: 0 0 0.5rem 0.5rem;
+    top: 0rem;
+    margin: 0rem;
+}
 header {
     font-family: 'serpentineboldoblique', arial, sans-serif;
     font-size: 80px;
