@@ -15,6 +15,7 @@
     <div id="line1"></div>
     <div id="line2"></div>  
     <div id="line3"></div>
+    <!--kastid-->
     <section>
         <!----ESIMENE KAST---->
         <div class="items">
@@ -26,20 +27,42 @@
         </div>
         <!----KOLMAS KAST---->
         <div class="items">
-            <div class="up">
-                <p>letsgo</p>
-            </div>
-            <div class="down">
-                <p>letsgo2</p>
+            <div class="kolmas">
+                <img src="up.png" alt="tehniline lahendus" class="image">
+                <img src="down.png" alt="tehniline lahendus" class="image" class="down">
             </div>
         </div>
     </section>
+    <!--genres-->
     <div class="genres">
         <div style="display:inline-block;color:orange;">
             genres:
         </div> 
-        <b>DRAMA COMEDY ACTION HORROR WESTERN THRILLER</b>             
+        <b>DRAMA COMEDY ACTION HORROR WESTERN THRILLER</b>        
     </div>
+    <!--progress-->
+    <div id="Progress_Status"> 
+        <div id="myprogressBar" style="width: 0%;"></div>
+    </div>
+    <br>
+    <div>
+        <button onclick="update()" class="download">DOWNLOAD</button>
+    </div>
+    <script> 
+        function update() { 
+          var element = document.getElementById("myprogressBar");    
+          var width = 1; 
+          var identity = setInterval(scene, 100); 
+          function scene() { 
+            if (width >= 100) { 
+              clearInterval(identity); 
+            } else { 
+              width++;  
+              element.style.width = width + '%';  
+            } 
+          } 
+        } 
+    </script>
 </body>
 </html>
 
