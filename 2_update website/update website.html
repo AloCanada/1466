@@ -54,10 +54,11 @@
           var element = document.getElementById("myprogressBar");    
           var width = 1; 
           var identity = setInterval(scene, 100); 
+          var hidden = document.getElementById('hidden-button')
           function scene() { 
             if (width >= 100) { 
-                clearInterval(identity);  
-                document.getElementById('hidden-button').style=transform = translateY(0%);
+                clearInterval(identity); 
+                hidden.style.transform = translateY("0%");
             } 
             else { 
                 width++;  
