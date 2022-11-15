@@ -10,7 +10,7 @@
 }
 #hidden-button {
     position: absolute;
-    transform: translateY(-120%);
+    transform: translateY(120%);
     transition: transform 325ms ease-in;
     background-color: #000000;
     padding: 0.5rem;
@@ -18,7 +18,15 @@
     border-radius: 0 0 0.5rem 0.5rem;
     top: 0rem;
     margin: 0rem;
+    display: flex
 }
+.coverart {
+    flex: 30%;
+}
+.cover-text{
+    flex: auto;
+}
+
 header {
     font-family: 'serpentineboldoblique', arial, sans-serif;
     font-size: 80px;
