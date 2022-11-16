@@ -11,11 +11,12 @@
 
 <body>
     <div id="hidden-button">
-        <div class="coverart">
-            <img src="Soome1 coverart.webp" alt="Soome1 coverart">
+        <div class="vasak">
+            <img src="Soome1 coverart.webp" alt="Soome1 coverart" class="cover-picture">
         </div>
-        <div class="cover-text">
-            <a href="https://youtu.be/mQ2tzJATnyY">lil mäll x lil allar - SOOME1</a>
+        <div class="parem">
+            <a class="cover-text" style="font-size: 3rem; font-weight: 700;" href="https://youtu.be/mQ2tzJATnyY">lil mäll x lil allar - SOOME1</a>
+            <p class="cover-text">TÄNAME: B-roll ja muidu ka muhe seltskond: Aron Kelder (aka motika tüüp), Helen Jakob (aka koerte omnik), Joonas Adami (aka karvane), Marten Käis Soome1 filmimas, Märt Chad Veri, Pauli i ne Ainso, Kerti Kala (roosade juustega)</p>
         </div>
     </div>
     <!--pealkiri-->
@@ -24,6 +25,7 @@
     <div id="line2"></div>  
     <div id="line3"></div>
     <!--kastid-->
+    <br>
     <section>
         <!----ESIMENE KAST---->
         <div class="items">
@@ -48,12 +50,13 @@
         </div> 
         <b>DRAMA COMEDY ACTION HORROR WESTERN THRILLER</b>        
     </div>
+    <br>
     <!--progress-->
     <div id="Progress_Status"> 
         <div id="myprogressBar" style="width: 0%;"></div>
     </div>
     <br>
-    <div>
+    <div style="text-align: center;">
         <button onclick="update()" class="download">DOWNLOAD</button>
     </div>
     <script> 
@@ -65,7 +68,7 @@
           function scene() { 
             if (width >= 100) { 
                 clearInterval(identity); 
-                hidden.style.transform = "translateY(0%)";
+                hidden.style.transform = "translateY(5%)";
             } 
             else { 
                 width++;  
@@ -74,6 +77,14 @@
           } 
         } 
     </script>
+    <br>
+    <div class="kast">
+        <p>PRO TIP</p>
+        <p>Ära hakka koodima</p>
+        <br>
+        <p>Vb teen ka mobile site</p>
+    </div>
+
 </body>
 </html>
 
