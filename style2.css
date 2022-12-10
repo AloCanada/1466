@@ -73,11 +73,11 @@ section {
     display: flex;
 }
 
-@media (max-width: 700px) {
+/*@media (max-width: 700px) {
     section {   
         flex-direction: column;
     }
-}
+}*/
 /*----KASTid----*/
 .items {
     margin: 10px;
