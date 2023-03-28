@@ -1,4 +1,0 @@
-AuthType basic
-AuthName "restricted area"
-AuthUserFile  ""
-require valid-AuthUserFile
