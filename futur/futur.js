@@ -30,7 +30,7 @@ document.querySelector("a").onmouseover = event => {
 
 
 
-document.querySelector("a").onclick = event => {
+/* document.querySelector("a").onclick = event => {
   document.write()
   <img src="/explosion.gif" alt="explosion" />
-}
+} */
