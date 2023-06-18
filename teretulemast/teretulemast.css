@@ -37,9 +37,6 @@ body {
     width: calc(100% - 10px);
     border-radius: 17px;
 }
-#contianer {
-
-}
 
 
 
@@ -135,3 +132,17 @@ body {
     left: 83%;
     transform: translateX(-50%);
 }
+#maintextAll {
+    position: fixed;
+    font-size: 20px;
+    text-align: justify;
+    width: 18.5%;
+    top: 75%;
+    left: 82.5%;
+    transform: translate(-50%, -50%);
+}
+/* #yt-link {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+} */

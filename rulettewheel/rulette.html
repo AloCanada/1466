@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Roulette Wheel</title>
-    <style>
-        body {
-    background: url("updatebackround1.png");
-    position: flex;
-    height: 100%;
-    background-color: #141411;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    font-weight: bolder;
-    width: min(90%, 1500px);
-    margin: auto;
-}
-#options {
-  color: blue;
-}
-    </style>
-  </head>
-  <body>
-    <input type="button" value="spin" style="float:left;" id='spin' />
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <script>
-        var options = ["fresh", "1x soft", "2x soft", "3x soft", "fresh", "1x soft", "2x soft", "3x soft", "fresh", "1x soft", "2x soft", "3x soft"];
+<head>
+  <title>Roulette Wheel</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/rulettewheel/rulette.css">
+  <link rel="stylesheet" href="/rulettewheel/rulette.js">
+</head>
+<body>
+  
+  <canvas id="canvas" width="500" height="500"></canvas>
+  
+<!--   <input type="button" value="spin" style="float:left;" 
+  id='source-link' 
+  class="meta-link"/> -->
+  
+  <a id="source-link" 
+  class="meta-link" 
+  target="_blank">
+    <span>Keeruta</span>
+  </a>
+
+  <a id="yt-link" class="meta-link" 
+  href="../futur/futur.html" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+    <span>menüü</span>
+  </a>
+
+<script>
+var options = ["fresh", "1x soft", "2x soft", "3x soft", "fresh", "1x soft", "2x soft", "3x soft", "fresh", "1x soft", "2x soft", "3x soft"];
 
 var startAngle = 0;
 var arc = Math.PI / (options.length / 2);
@@ -35,7 +39,7 @@ var spinTimeTotal = 0;
 
 var ctx;
 
-document.getElementById("spin").addEventListener("click", spin);
+document.getElementById("source-link").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -152,6 +156,7 @@ function easeOut(t, b, c, d) {
 }
 
 drawRouletteWheel();
-    </script>
-  </body>
+</script>
+
+</body>
 </html>

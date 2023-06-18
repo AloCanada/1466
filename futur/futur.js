@@ -2,7 +2,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval = null;
 
-document.querySelector("h1").onmouseover = event => {  
+document.querySelector("a").onmouseover = event => {  
   let iteration = 0;
   
   clearInterval(interval);
@@ -25,4 +25,12 @@ document.querySelector("h1").onmouseover = event => {
     
     iteration += 1 / 3;
   }, 30);
+}
+
+
+
+
+document.querySelector("a").onclick = event => {
+  document.write()
+  <img src="/explosion.gif" alt="explosion" />
 }
