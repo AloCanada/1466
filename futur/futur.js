@@ -1,32 +1,38 @@
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lingid = document.querySelectorAll(".link");
 
-let interval = null;
+lingid.forEach((kast) => {
+  console.log(kast);
+});
 
-document.querySelector("a").onmouseover = event => {  
-  let iteration = 0;
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   
-  clearInterval(interval);
+  let interval = null;
   
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
+  document.querySelector("a").onmouseover = event => {  
+    let iteration = 0;
+    
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+      event.target.innerText = event.target.innerText
       .split("")
       .map((letter, index) => {
         if(index < iteration) {
           return event.target.dataset.value[index];
         }
-      
+        
         return letters[Math.floor(Math.random() * 26)]
       })
       .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
-    }
-    
-    iteration += 1 / 3;
-  }, 30);
-}
-
+      
+      if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
+      }
+      
+      iteration += 1 / 3;
+    }, 30);
+  }
+  
 
 
 

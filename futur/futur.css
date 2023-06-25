@@ -7,6 +7,9 @@ body {
   overflow: hidden;
 }
 
+.link {
+  
+}
 a {
   font-weight: bold;
   font-family: 'Space Mono', monospace;
@@ -21,9 +24,6 @@ a:hover {
   color: black;
 }
 
-
-#text1 {}
-#tekst2 {}
 
 /* -- YouTube Link Styles -- */
 
