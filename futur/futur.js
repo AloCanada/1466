@@ -2,13 +2,12 @@ const lingid = document.querySelectorAll(".link");
 
 lingid.forEach((kast) => {
   console.log(kast);
-});
-
+  
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   
   let interval = null;
   
-  document.querySelector("a").onmouseover = event => {  
+  kast.onmouseover = event => {  
     let iteration = 0;
     
     clearInterval(interval);
@@ -30,9 +29,10 @@ lingid.forEach((kast) => {
       }
       
       iteration += 1 / 3;
-    }, 30);
+    }, 15); /* originaalselt 30 */
   }
-  
+
+});
 
 
 
