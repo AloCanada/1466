@@ -19,16 +19,18 @@ a {
   font-weight: bold;
   font-family: 'Space Mono', monospace;
   font-size: clamp(3rem, 5vw, 10rem);
-  color: palegreen;
+  color: #fea99d;
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
 }
 
 a:hover {
-  background-color: palegreen;
-  color: black;
+  background-color: #1f212e;
 }
 
+a:visited {
+  color: #aa4648;
+}
 
 /* -- YouTube Link Styles -- */
 
