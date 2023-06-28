@@ -1,29 +1,34 @@
+html {
+  background-image: url('syntwaveByKIDMOGRAPH.gif');
+  background-position: center;
+/*   background-size: cover;
+ */  overflow: hidden;
+}
+
 body {
   display: grid;
   place-items: center;
   height: 100vh;
-  background-color: black;
   margin: 0rem;
-  overflow: hidden;
 }
 
+.link {
+  
+}
 a {
   font-weight: bold;
   font-family: 'Space Mono', monospace;
-  font-size: clamp(3rem, 10vw, 10rem);
-  color: white;
+  font-size: clamp(3rem, 5vw, 10rem);
+  color: palegreen;
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
 }
 
 a:hover {
-  background-color: white;
+  background-color: palegreen;
   color: black;
 }
 
-
-#text1 {}
-#tekst2 {}
 
 /* -- YouTube Link Styles -- */
 
