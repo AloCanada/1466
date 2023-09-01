@@ -7,17 +7,17 @@ html {
 
 body {
   display: grid;
-  place-items: center;
   height: 100vh;
   margin: 0rem;
-}
-
-.link {
-  
-}
-a {
+  place-items: center;
   font-weight: bold;
   font-family: 'Space Mono', monospace;
+  cursor: url('/cursor-dino.png'), auto;
+}
+
+.link {}
+
+a {
   font-size: clamp(3rem, 5vw, 10rem);
   color: #fea99d;
   padding: 0rem clamp(1rem, 2vw, 3rem);

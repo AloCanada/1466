@@ -1,0 +1,28 @@
+html {
+/*     background-image: url('syntwaveByKIDMOGRAPH.gif');
+    background-position: center;
+    background-size: cover;
+    overflow: hidden; */
+  }
+  
+body {
+    display: grid;
+    height: 100vh;
+    margin: 0rem;
+    place-items: center;
+    font-weight: bold;
+    font-family: 'Space Mono', monospace;
+    cursor: url('/cursor-dino.png'), auto;
+  }
+  
+.kvlopuni {
+    font-size: 1.5rem;
+    display: none;
+}
+  
+/* 
+    font-size: clamp(3rem, 5vw, 10rem);
+    color: #fea99d;
+    padding: 0rem clamp(1rem, 2vw, 3rem);
+    border-radius: clamp(0.4rem, 0.75vw, 1rem);
+ */
