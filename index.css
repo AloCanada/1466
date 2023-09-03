@@ -1,0 +1,16 @@
+html { 
+    color-scheme: light dark; 
+    background: #f7fbff top/cover no-repeat url("hinnov.JPG");
+}
+body { 
+    width: 30em; 
+    margin: 0 auto;
+    font-family: sans-serif, Tahoma, Verdana, Arial; 
+    color:aliceblue;
+    font-weight: bold;
+}
+.kast {
+    border-radius: 5px;
+    background-color: black;
+    padding: 1px 15px;
+}

@@ -1,37 +1,43 @@
 html {
-/*     background-image: url('syntwaveByKIDMOGRAPH.gif');
-    background-position: center;
-    background-size: cover;
-    overflow: hidden; */
-  }
+  background-image: url('city-neon.gif');
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
   
 body {
-    display: grid;
-    height: 100vh;
-    margin: 0rem;
-    place-items: center;
-    font-weight: bold;
-    font-family: 'Space Mono', monospace;
-    cursor: url('/cursor-dino.png'), auto;
-    background: #111;
-    color: aliceblue;
-  }
+  display: grid;
+  height: 100vh;
+  margin: 0rem;
+  place-items: center;
+  font-weight: bold;
+  font-family: 'Space Mono', monospace;
+  cursor: url('/cursor-dino.png'), auto;
+  /* background: #111; */
+}
   
-  html, body, .container {
-    height: 100%;
+html, body, .container {
+  height: 100%;
 }
 
 .centre_shit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#laetud, #laadimine {
+  color: aliceblue;
+  background-color: #161c44;
 }
 
 
   /* L A A D I M I N E */
 #laadimine {
   display: block;
+  padding: 0vw 2vw 3vw;
+  border-radius: 2vw;
 }
 
 .bar {
@@ -58,6 +64,12 @@ body {
 #laetud {
   display: none;
   transform: translate(0%, +10%);
+  padding: 0vw 2.5vw;
+  border-radius: 2vw;
+}
+
+.prosa {
+  
 }
 
 .kvlopuni, .tehtud {

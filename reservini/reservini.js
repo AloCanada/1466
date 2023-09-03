@@ -8,7 +8,10 @@ setTimeout(() => {
     element.style.display = 'block';
   });  
   changeElementText(".kvlopuni");
-  changeElementText(".tehtud");
+  setTimeout(() => {
+    changeElementText(".tehtud");
+
+  }, 700);
 }, 3000);
 
 
@@ -16,7 +19,6 @@ setTimeout(() => {
 
 const letters = "abcdefghijklmnopqrstuvwxyz"; /* ABCDEFGHIJKLMNOPQRSTUVWXYZ */            
 let interval = null;
-var shuffleArv = 6;
 
 function changeElementText(elementSelector) {
   const element = document.querySelector(elementSelector);
@@ -40,12 +42,8 @@ function changeElementText(elementSelector) {
       }
       
       iteration += 1 / 3;
-    }, shuffleArv); /* Originally 30 */
+    }, 12); /* Originally 30 */
   }
-  console.log(shuffleArv);
-
-  shuffleArv = 3;
-  console.log(shuffleArv);
 }
 
 
@@ -64,7 +62,8 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-  document.getElementById("aega").innerHTML = days + "d " + hours + "h ";
+  document.getElementById("aega").innerHTML = days + "d " + hours + "h " +
+    minutes + "m " + seconds + "s";
     
   if (distance < 0) {
     clearInterval(x);
