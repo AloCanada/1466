@@ -1,3 +1,8 @@
+if (window.innerWidth < 720) {
+  document.querySelectorAll("p").forEach(element => {
+    element.style.display = 'block';
+  })}
+
 const lingid = document.querySelectorAll(".link");
 
 lingid.forEach((kast) => {

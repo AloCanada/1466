@@ -18,7 +18,7 @@ body {
 .link {}
 
 a {
-  font-size: clamp(3rem, 5vw, 10rem);
+  font-size: 9vw;
   color: #fea99d;
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
@@ -30,6 +30,11 @@ a:hover {
 
 a:visited {
   color: #aa4648;
+}
+
+p {
+  color: #fea99d;
+  display: none;
 }
 
 /* -- YouTube Link Styles -- */
