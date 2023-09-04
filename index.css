@@ -14,3 +14,9 @@ body {
     background-color: black;
     padding: 1px 15px;
 }
+h1 {
+    font-size: xx-large;
+}
+p {
+    font-size: x-large;
+}
