@@ -11,18 +11,22 @@ body {
   margin: 0rem;
   place-items: center;
   font-weight: bold;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Teko', 'Space Mono', monospace;
   cursor: url('/cursor-dino.png'), auto;
 }
+.logo {
+  font-size: 140px;
+  color: #fea89d46;
+  margin-bottom: -10%;
+}
 
-.link {}
-
-a {
-  font-size: clamp(25px, 35px, 80px);
+.link {
+  font-size: clamp(25px, 65px, 80px);
   color: #fea99d;
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
 }
+
 /* @media (min-width:768px) {
   #page { 
       width:600px;
@@ -96,4 +100,21 @@ body.menu-toggled > .meta-link > span {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
+}
+
+/* S H A K E R */
+
+.logo:hover {    
+  -webkit-animation: shake 0.2s ease-in-out 0.1s infinite alternate;
+}
+
+@-webkit-keyframes shake {
+from {
+  -webkit-transform: rotate(5deg);
+}
+to {
+ -webkit-transform-origin:center center;
+ -webkit-transform: rotate(-5deg);
+}
+
 }
