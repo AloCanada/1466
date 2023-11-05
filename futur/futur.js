@@ -13,6 +13,11 @@ lingid.forEach((kast) => {
   let interval = null;
   
   kast.onmouseover = event => {  
+    
+    /* siia tuleb shakemis effekt
+    document.querySelectorAll("teksti-kastid").forEach(element => {
+    element.style.display = 'block';
+  })} */
     let iteration = 0;
     
     clearInterval(interval);

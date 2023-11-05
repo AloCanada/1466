@@ -14,6 +14,11 @@ body {
   font-family: 'Teko', 'Space Mono', monospace;
   cursor: url('/cursor-dino.png'), auto;
 }
+
+.teksti-kastid{
+  
+}
+
 .logo {
   font-size: 120px;
   color: #fea89d46;
