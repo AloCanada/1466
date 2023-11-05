@@ -38,6 +38,7 @@ body {
 
 a:hover {
   background-color: #1f212e;
+  cursor: url('/cursor-dino.png'), auto;
 }
 
 a:visited {
