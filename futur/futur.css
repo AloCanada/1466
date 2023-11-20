@@ -1,5 +1,5 @@
 html {
-  background-image: url('syntwaveByKIDMOGRAPH.gif');
+  background-image: url('bg.png');
   background-position: center;
 /*   background-size: cover;
  */  overflow: hidden;
@@ -22,7 +22,7 @@ body {
 .logo {
   font-size: 120px;
   color: #fea89d46;
-  margin-bottom: -10%;
+  margin: -10%;
 }
 
 .link {
@@ -52,7 +52,6 @@ a:visited {
 
 p {
   color: #fea99d;
-  display: none;
 }
 
 /* -- YouTube Link Styles -- */
