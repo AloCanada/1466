@@ -50,7 +50,7 @@ function changeElementText(elementSelector) {
 
 /* C O U N T D O W N */
 
-var countDownDate = new Date("jun 17, 2024 14:00:00").getTime();
+var countDownDate = new Date("jun 14, 2024 14:00:00").getTime();
 
 var x = setInterval(function() {
   /* DAYS TO GO */
