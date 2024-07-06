@@ -1,4 +1,4 @@
-/* T I M E D   C O M M A N D S */
+  /* T I M E D   C O M M A N D S */
 
 setTimeout(() => {
   document.querySelectorAll("#laadimine").forEach(element => {

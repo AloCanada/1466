@@ -1,8 +1,7 @@
 html {
   background-image: url('bg.png');
   background-position: center;
-/*   background-size: cover;
- */  overflow: hidden;
+  overflow: hidden;
 }
 
 body {
@@ -16,20 +15,21 @@ body {
 }
 
 .teksti-kastid{
-  
+  text-align: center;
 }
 
-.logo {
-  font-size: 120px;
-  color: #fea89d46;
+h1 {
+  font-size: 6rem;
+  padding: 20px;
+  color: #bd97e0ab;
   margin: -10%;
+  text-shadow: 0 0 15px #bd97e0;
 }
 
 .link {
   font-size: 2.5rem;
-  color: #fea99d;
-  padding: 0rem clamp(1rem, 2vw, 3rem);
-  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+  font-style: italic;
+  color: #8a2be2;
 }
 
 /* @media (min-width:768px) {
@@ -46,12 +46,14 @@ a:hover {
   cursor: url('/cursor-dino.png'), auto;
 }
 
-a:visited {
-  color: #aa4648;
-}
+/* a:visited {
+  color: #bfafce;
+} */
 
 p {
-  color: #fea99d;
+  color: #bfafce;
+  font-style: italic;
+
 }
 
 /* -- YouTube Link Styles -- */
@@ -105,21 +107,4 @@ body.menu-toggled > .meta-link > span {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-}
-
-/* S H A K E R */
-
-.logo:hover {    
-  -webkit-animation: shake 0.2s ease-in-out 0.1s infinite alternate;
-}
-
-@-webkit-keyframes shake {
-from {
-  -webkit-transform: rotate(5deg);
-}
-to {
- -webkit-transform-origin:center center;
- -webkit-transform: rotate(-5deg);
-}
-
 }
