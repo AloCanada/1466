@@ -1,4 +1,47 @@
-var options = ["fresh", "rottar", "õnne-fresh", "doble-rottar", "värske", "soft", "grant-extreme", "super-soft", "uus keerutus"];
+// Define the two option lists
+const freshOptions = ["fresh", "rottar", "õnne-fresh", "doble-rottar", "värske", "soft", "grant-extreme", "super-soft", "uus keerutus"];
+const monsterOptions = ["Mango Loco", "Classic", "White", "Pinapple", "Redla!", "Ultra Violet", "Punch", "Watermelon", "Juiced"];
+
+// Declare the 'options' variable that will hold the current set of options
+let options = freshOptions;  // Initially set to freshOptions
+
+// Get references to the button and list elements
+const toggleBtn = document.getElementById('toggleBtn');
+const optionsList = document.getElementById('optionsList');
+
+// Function to update the displayed options based on the current 'options' variable
+function updateOptions() {
+  // Clear the current list
+  optionsList.innerHTML = '';
+
+  // Populate the list with the current 'options' array
+  options.forEach(option => {
+    const li = document.createElement('li');
+    li.textContent = option;
+    optionsList.appendChild(li);
+  });
+
+  // Update the button text based on the current options
+  toggleBtn.textContent = options === freshOptions ? 'Switch to Monster' : 'Switch to Fresh';
+
+  // Update the roulette wheel whenever options change
+  drawRouletteWheel();  // Call this to redraw the roulette wheel with updated options
+}
+
+// Add an event listener to the toggle button
+toggleBtn.addEventListener('click', function() {
+  // Toggle between the two options lists
+  options = (options === freshOptions) ? monsterOptions : freshOptions;
+  
+  // Update the options display and redraw the wheel
+  updateOptions();
+});
+
+// Initialize with the "Fresh" options
+updateOptions();
+
+
+/* R U L E T T E  */
 
 var startAngle = 0;
 var arc = Math.PI / (options.length / 2);
@@ -49,9 +92,10 @@ function drawRouletteWheel() {
 
     ctx.font = 'bold 25px Helvetica, Arial';
 
+    arc = Math.PI / (options.length / 2); // Update arc based on the length of options
+
     for(var i = 0; i < options.length; i++) {
       var angle = startAngle + i * arc;
-      //ctx.fillStyle = colors[i];
       ctx.fillStyle = getColor(i, options.length);
 
       ctx.beginPath();
@@ -105,7 +149,7 @@ function rotateWheel() {
   var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
   startAngle += (spinAngle * Math.PI / 180);
   drawRouletteWheel();
-  spinTimeout = setTimeout('rotateWheel()', 30);
+  spinTimeout = setTimeout(rotateWheel, 30);
 }
 
 function stopRotateWheel() {
@@ -115,7 +159,7 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
-  var text = options[index]
+  var text = options[index];
   ctx.fillText(text, 280 - ctx.measureText(text).width / 2, 280 + 10);
   ctx.restore();
 }
@@ -127,21 +171,3 @@ function easeOut(t, b, c, d) {
 }
 
 drawRouletteWheel();
-
-
-
-
-
-function applyBodyStyles() {
-  const grid = document.getElementById("ylemine")
-  // Check if the device is mobile
-  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    console.log("mobile device");
-    grid.style.margin = "200px 0px"
-  } 
-  else {
-  }
-}
-
-// Run the function to apply styles when the DOM is loaded
-document.addEventListener('DOMContentLoaded', applyBodyStyles);
