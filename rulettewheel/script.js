@@ -1,6 +1,6 @@
 // Define the two option lists
 const freshOptions = ["fresh", "rottar", "õnne-fresh", "doble-rottar", "värske", "soft", "grant-extreme", "super-soft", "uus keerutus"];
-const monsterOptions = ["Mango Loco", "Classic", "White", "Pinapple", "Redla!", "Ultra Violet", "Punch", "Watermelon", "Juiced"];
+const monsterOptions = ["Mango Loco", "Classic", "White", "Pineapple", "Redla!", "Ultra Violet", "Punch", "Watermelon", "Juiced"];
 
 // Declare the 'options' variable that will hold the current set of options
 let options = freshOptions;  // Initially set to freshOptions
