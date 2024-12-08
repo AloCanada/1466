@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>1466 to html</title>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>  
+    <link rel="stylesheet" href="css/update-1466.css">
+</head>
+<style>
+</style>
+
+<body>
+    <section style="position: absolute; width: min(90%, 1500px);">
+        <div id="hidden-button">
+            <div class="vasak">
+                <img src="/images/update-1466/soome1-coverart.webp" alt="Soome1 coverart" class="cover-picture">
+            </div>
+            <div class="parem">
+                <a class="cover-text" style="font-size: 3rem; font-weight: 700;" href="https://youtu.be/mQ2tzJATnyY">lil mäll x lil allar - SOOME1</a>
+                <p class="cover-text">TÄNAME: B-roll ja muidu ka muhe seltskond: Aron Kelder (aka motika tüüp), Helen Jakob (aka koerte omnik), Joonas Adami (aka karvane), Marten Käis Soome1 filmimas, Märt Chad Veri, Pauli i ne Ainso, Kerti Kala (roosade juustega)</p>
+            </div>
+        </div>        
+    </section>
+    <!--pealkiri-->
+    <header>1644 UPDATE</header>
+    <div id="line1"></div>
+    <div id="line2"></div>  
+    <div id="line3"></div>
+    <!--kastid-->
+    <br>
+    <section>
+        <!----ESIMENE KAST---->
+        <div class="items">
+            <img src="/images/update-1466/vis-lahendus.png" alt="visuaalne lahendus" class="image">
+        </div>
+        <!----TEINE KAST---->
+        <div class="items">
+            <img src="/images/update-1466/tehniline-lahendus.png" alt="tehniline lahendus" class="image">
+        </div>
+        <!----KOLMAS KAST---->
+        <div class="items">
+            <img src="/images/update-1466/up.png" alt="up" class="image">
+            <img src="/images/update-1466/down.png" alt="down" class="image" id="down">
+        </div>
+    </section>
+    <!--genres-->
+    <div class="genres">
+        <div style="display:inline-block;color:orange;">
+            genres:
+        </div> 
+        <b>DRAMA COMEDY ACTION HORROR WESTERN THRILLER</b>        
+    </div>
+    <br>
+<!--progress-->
+    <div id="Progress_Status"> 
+        <div id="myprogressBar" style="width: 0%;"></div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <button onclick="update()" class="download">DOWNLOAD</button>
+    </div>
+    <link rel="stylesheet" href="./style.css">
+<!-- see link -->
+    <a id="yt-link" class="meta-link" href="/index.html" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+        <span>menüü</span>
+    </a>
+
+    <br>
+    <br>
+    <script> 
+        function update() { 
+          var element = document.getElementById("myprogressBar");    
+          var width = 1; 
+          var identity = setInterval(scene, 100); 
+          var hidden = document.getElementById('hidden-button')
+          function scene() { 
+            if (width >= 100) { 
+                clearInterval(identity); 
+                hidden.style.transform = "translateY(-20%)";
+            } 
+            else { 
+                width++;  
+                element.style.width = width + '%';  
+            } 
+          } 
+        } 
+    </script>
+
+</body>
+</html>
+
