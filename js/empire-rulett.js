@@ -1,9 +1,9 @@
 // Define the two option lists
-const freshOptions = ["fresh", "rottar", "õnne-fresh", "doble-rottar", "värske", "soft", "grant-extreme", "super-soft", "uus keerutus"];
-const monsterOptions = ["Mango Loco", "Classic", "White", "Pineapple", "Redla!", "Ultra Violet", "Punch", "Watermelon", "Juiced"];
+const freshDrinks = ["fresh", "rottar", "lucky-fresh", "doble-rottar", "fresh-classic", "soft", "grant-extreme", "super-soft", "new-twist"];
+const monsterDrinks = ["Mango Loco", "Classic", "White", "Pineapple", "Redla!", "Ultra Violet", "Punch", "Watermelon", "Juiced"];
 
 // Declare the 'options' variable that will hold the current set of options
-let options = freshOptions;  // Initially set to freshOptions
+let options = freshDrinks;  // Initially set to freshDrinks
 
 // Get references to the button and list elements
 const toggleBtn = document.getElementById('toggleBtn');
@@ -22,7 +22,7 @@ function updateOptions() {
   });
 
   // Update the button text based on the current options
-  toggleBtn.textContent = options === freshOptions ? 'Switch to Monster' : 'Switch to Fresh';
+  toggleBtn.textContent = options === freshDrinks ? 'Switch to Monster' : 'Switch to Fresh';
 
   // Update the roulette wheel whenever options change
   drawRouletteWheel();  // Call this to redraw the roulette wheel with updated options
@@ -31,7 +31,7 @@ function updateOptions() {
 // Add an event listener to the toggle button
 toggleBtn.addEventListener('click', function() {
   // Toggle between the two options lists
-  options = (options === freshOptions) ? monsterOptions : freshOptions;
+  options = (options === freshDrinks) ? monsterDrinks : freshDrinks;
   
   // Update the options display and redraw the wheel
   updateOptions();
@@ -87,10 +87,12 @@ function drawRouletteWheel() {
     ctx = canvas.getContext("2d");
     ctx.clearRect(0,0,500,500);
 
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = "rgba(255, 61, 206, 0.8)";
+    ctx.lineWidth = 3;
 
-    ctx.font = 'bold 25px Helvetica, Arial';
+    // Set responsive font size based on canvas size
+    var fontSize = Math.max(16, Math.min(28, canvas.width / 20));
+    ctx.font = `bold ${fontSize}px "Courier New", monospace`;
 
     arc = Math.PI / (options.length / 2); // Update arc based on the length of options
 
@@ -105,21 +107,37 @@ function drawRouletteWheel() {
       ctx.fill();
 
       ctx.save();
-      ctx.shadowOffsetX = -1;
-      ctx.shadowOffsetY = -1;
-      ctx.shadowBlur    = 0;
-      ctx.shadowColor   = "rgb(220,220,220)";
-      ctx.fillStyle = "black";
+      // Enhanced text styling with glow effect
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#ff3dce";
+      
+      // Text outline for better readability
+      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 3;
+      
+      ctx.fillStyle = "#ffffff";
       ctx.translate(280 + Math.cos(angle + arc / 2) * textRadius, 
       280 + Math.sin(angle + arc / 2) * textRadius);
       ctx.rotate(angle + arc / 2 + Math.PI / 2);
       var text = options[i];
+      
+      // Draw text outline first
+      ctx.strokeText(text, -ctx.measureText(text).width / 2, 0);
+      // Then fill text
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
     } 
 
-    //Arrow
-    ctx.fillStyle = "#df0a83";
+    //Arrow with glow effect
+    ctx.save();
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = "#ff3dce";
+    
+    ctx.fillStyle = "#ff3dce";
     ctx.beginPath();
     ctx.moveTo(280 - 4, 280 - (outsideRadius + 5));
     ctx.lineTo(280 + 4, 280 - (outsideRadius + 5));
@@ -130,6 +148,12 @@ function drawRouletteWheel() {
     ctx.lineTo(280 - 4, 280 - (outsideRadius - 5));
     ctx.lineTo(280 - 4, 280 - (outsideRadius + 5));
     ctx.fill();
+    
+    // White arrow on top for better visibility
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.restore();
   }
 }
 
@@ -158,9 +182,37 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = 'bold 30px Helvetica, Arial';
+  
+  // Enhanced winner text styling
+  var canvas = document.getElementById("canvas");
+  var winnerFontSize = Math.max(24, Math.min(40, canvas.width / 15));
+  ctx.font = `bold ${winnerFontSize}px "Courier New", monospace`;
+  
+  // Glow effect for winner text
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = "#ff3dce";
+  
+  // Multiple glow layers for stronger effect
+  ctx.fillStyle = "#ff3dce";
   var text = options[index];
-  ctx.fillText(text, 280 - ctx.measureText(text).width / 2, 280 + 10);
+  var x = 280 - ctx.measureText(text).width / 2;
+  var y = 280 + 10;
+  
+  // Draw multiple glow layers
+  for (let i = 0; i < 3; i++) {
+    ctx.fillText(text, x, y);
+  }
+  
+  // Final white text on top
+  ctx.shadowBlur = 5;
+  ctx.fillStyle = "#ffffff";
+  ctx.strokeStyle = "#000000";
+  ctx.lineWidth = 2;
+  ctx.strokeText(text, x, y);
+  ctx.fillText(text, x, y);
+  
   ctx.restore();
 }
 

@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>menu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>1466 - Digital Experience Portfolio</title>
+  <meta name="description" content="Welcome to 1466 - A digital experience portfolio featuring interactive projects, galleries, and creative experiments.">
+  <meta name="keywords" content="1466, digital art, portfolio, interactive, web experiences">
+  
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="1466 - Digital Experience Portfolio">
+  <meta property="og:description" content="Welcome to 1466 - A digital experience portfolio featuring interactive projects, galleries, and creative experiments.">
+  <meta property="og:type" content="website">
+  
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
+  
+  <!-- Load only used fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
-<!-- partial:index.partial.html -->
+<body class="index-page">
+  <header class="index-header">
+    <h1 id="main-title" class="index-title">1466</h1>
+  </header>
 
-<div class="teksti-kastid">
-  <h1>1466</h1>
-  <a class="link" href="/empire-rulett.html" 
-    data-value="EMPIRE RULETT">EMPIRE RULETT</a>
-  <br>
-  <a class="link" href="http://galerii.1466.eu" 
-  data-value="GALERII">GALERII</a>
-  <br>
-  <a class="link" href="https://arhiiv.1466.eu/main" 
-    data-value="VANA 1466">VANA 1466</a>  
-  <br>
-  <a class="link" href="http://alomon.eu" 
-    data-value="ALOMON">ALOMON</a>
-  <br>  
-  <a class="link" href="lamp.html" 
-    data-value="LAMP">LAMP</a>
-  <br>
-    
-</div>
+  <main class="index-main">
+    <section class="file-list">
+      <h2>peamised projektid</h2>
+      <div class="file-grid main-projects">
+        <div class="file-card">
+          <h3 class="file-name">empire-rulett</h3>
+          <p>Interaktiivne rulett mäng töötab täielikult brauseris. Sisaldab juhuslik valik algoritme ja visuaalsed efektid.</p>
+          <a href="empire-rulett.html" class="meta-link">
+            <span data-value="ava fail">ava fail</span>
+          </a>
+        </div>
+        
+        <div class="file-card">
+          <h3 class="file-name">meedia</h3>
+          <p>Meediakollektsioon - videod, muusika ja loominguline sisu. Vaata meie loomingut ja projekte.</p>
+          <a href="meedia.html" class="meta-link">
+            <span data-value="ava fail">ava fail</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="index-footer">
+    <div class="footer-links">
+      <a href="follow-cursor.html" class="footer-link meta-link">
+        <span data-value="follow-cursor">follow-cursor</span>
+      </a>
+      <a href="kv-reserviloendur.html" class="footer-link meta-link">
+        <span data-value="kv-reserviloendur">kv-reserviloendur</span>
+      </a>
+      <a href="welcome-test.html" class="footer-link meta-link">
+        <span data-value="welcome-test">welcome-test</span>
+      </a>
+      <a href="lamp.html" class="footer-link meta-link">
+        <span data-value="lamp">lamp</span>
+      </a>
+    </div>
+  </footer>
 
-  <h2>Files in this directory:</h2>
-  <ul>
-    <li><a href="empire-rulett.html">empire-rulett.html</a></li>
-    <li><a href="follow-cursor.html">follow-cursor.html</a></li>
-    <li><a href="index.html">index.html</a></li>
-    <li><a href="kv-reserviloendur.html">kv-reserviloendur.html</a></li>
-    <li><a href="lamp.html">lamp.html</a></li>
-    <li><a href="under-construction.html">under-construction.html</a></li>    
-    <li><a href="update-1466.html">update-1466.html</a></li>
-    <li><a href="welcome-test.html">welcome-test.html</a></li>
-</ul>
-
-  <script  src="/js/index.js"></script>
-
+  <script src="js/index.js"></script>
 </body>
 </html>

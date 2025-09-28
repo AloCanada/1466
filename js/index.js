@@ -1,52 +1,117 @@
-if (window.innerWidth < 720) {
-  document.querySelectorAll("p").forEach(element => {
-    element.style.display = 'block';
-  })}
+/**
+ * Navigation Text Scramble Effect
+ * Creates a hacker-style text scrambling animation on navigation links
+ */
 
-const lingid = document.querySelectorAll(".link");
+// Configuration constants
+const CONFIG = {
+  MOBILE_BREAKPOINT: 720,
+  ANIMATION_SPEED: 15, // milliseconds
+  ITERATION_INCREMENT: 1 / 3,
+  ALPHABET: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+};
 
-lingid.forEach((kast) => {
-  console.log(kast);
+/**
+ * Initialize the navigation text scramble effect
+ */
+function initializeNavigation() {
+  const navigationLinks = document.querySelectorAll('.meta-link span');
   
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  navigationLinks.forEach(link => {
+    setupTextScrambleEffect(link);
+  });
+}
+
+/**
+ * Setup text scramble effect for a navigation link
+ * @param {HTMLElement} linkElement - The navigation link element
+ */
+function setupTextScrambleEffect(linkElement) {
+  let animationInterval = null;
   
-  let interval = null;
+  linkElement.addEventListener('mouseenter', (event) => {
+    handleTextScramble(event.target, animationInterval);
+  });
   
-  kast.onmouseover = event => {  
-    
-    /* siia tuleb shakemis effekt
-    document.querySelectorAll("teksti-kastid").forEach(element => {
-    element.style.display = 'block';
-  })} */
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-      event.target.innerText = event.target.innerText
+  linkElement.addEventListener('mouseleave', () => {
+    clearInterval(animationInterval);
+  });
+}
+
+/**
+ * Handle the text scrambling animation
+ * @param {HTMLElement} target - The target element to animate
+ * @param {number} currentInterval - Current animation interval ID
+ */
+function handleTextScramble(target, currentInterval) {
+  const originalText = target.dataset.value;
+  
+  if (!originalText) {
+    console.warn('Navigation link missing data-value attribute:', target);
+    return;
+  }
+  
+  let iteration = 0;
+  
+  // Clear any existing animation
+  clearInterval(currentInterval);
+  
+  currentInterval = setInterval(() => {
+    // Generate scrambled text
+    const scrambledText = originalText
       .split("")
       .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+        // Show correct letters up to current iteration
+        if (index < iteration) {
+          return originalText[index];
         }
-        
-        return letters[Math.floor(Math.random() * 26)]
+        // Show random letter for remaining positions
+        return CONFIG.ALPHABET[Math.floor(Math.random() * CONFIG.ALPHABET.length)];
       })
       .join("");
-      
-      if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-      }
-      
-      iteration += 1 / 3;
-    }, 15); /* originaalselt 30 */
+    
+    target.textContent = scrambledText;
+    
+    // Complete animation when all letters are revealed
+    if (iteration >= originalText.length) {
+      clearInterval(currentInterval);
+    }
+    
+    iteration += CONFIG.ITERATION_INCREMENT;
+  }, CONFIG.ANIMATION_SPEED);
+}
+
+/**
+ * Apply mobile-specific adjustments
+ */
+function handleMobileAdjustments() {
+  if (window.innerWidth < CONFIG.MOBILE_BREAKPOINT) {
+    // Mobile-specific adjustments can be added here
+    document.body.classList.add('mobile-layout');
+  } else {
+    document.body.classList.remove('mobile-layout');
   }
+}
 
-});
+/**
+ * Initialize all functionality when DOM is loaded
+ */
+function init() {
+  try {
+    initializeNavigation();
+    handleMobileAdjustments();
+    
+    // Add resize listener for responsive behavior
+    window.addEventListener('resize', handleMobileAdjustments);
+    
+  } catch (error) {
+    console.error('Error initializing navigation:', error);
+  }
+}
 
-
-
-/* document.querySelector("a").onclick = event => {
-  document.write()
-  <img src="/explosion.gif" alt="explosion" />
-} */
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

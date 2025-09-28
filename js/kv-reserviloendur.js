@@ -1,16 +1,15 @@
   /* T I M E D   C O M M A N D S */
 
 setTimeout(() => {
-  document.querySelectorAll("#laadimine").forEach(element => {
+  document.querySelectorAll("#loading").forEach(element => {
     element.style.display = 'none';
   });
-  document.querySelectorAll("#laetud").forEach(element => {
+  document.querySelectorAll("#loaded").forEach(element => {
     element.style.display = 'block';
   });  
-  changeElementText(".kvlopuni");
+  changeElementText(".countdown-text");
   setTimeout(() => {
-    changeElementText(".tehtud");
-
+    changeElementText(".progress-text");
   }, 700);
 }, 3000);
 
@@ -62,12 +61,12 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-  document.getElementById("aega").innerHTML = days + "d " + hours + "h " +
+  document.getElementById("timeRemaining").innerHTML = days + "d " + hours + "h " +
     minutes + "m " + seconds + "s";
     
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("aega").innerHTML = "EXPIRED";
+    document.getElementById("timeRemaining").innerHTML = "EXPIRED";
   }
 
   /* D E B U G */
@@ -78,7 +77,7 @@ var x = setInterval(function() {
   var done = Math.floor(AllTime - distance);
   var percentage = parseFloat((done * 100 / AllTime).toFixed(2));
 
-  document.getElementById("protsente").innerHTML = percentage + "%";
+  document.getElementById("percentageComplete").innerHTML = percentage + "%";
 
   /* D E B U G */
 /*   console.log("now" + now);

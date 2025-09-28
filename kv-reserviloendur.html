@@ -1,38 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="et">
 <head>
   <meta charset="UTF-8">
-  <title>menu</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KV Reservilõendur - 1466</title>
+  <meta name="description" content="Kaitseväe reservilõenduri aeg - 1466 digitaalne kogemus">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/kv-reserviloendur.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
+<body class="kv-page">
 
-<div class="centre_shit">
-  <!-- L A A D I M I N E -->
-  <div id="laadimine"> 
+<div class="center-content">
+  <!-- Loading state -->
+  <div id="loading"> 
     <p>Laeb..</p>
-    <div class="bar"></div>
+    <div class="loading-bar"></div>
   </div>
-  <!-- L A E T U D -->
-  <div id="laetud"> 
-    <h1 class="kvlopuni" data-value="reservini jäänud">
+  
+  <!-- Loaded state -->
+  <div id="loaded"> 
+    <h1 class="countdown-text" data-value="reservini jäänud">
       reservini jäänud</h1>
-    <p id="aega"></p>
+    <p id="timeRemaining"></p>
   </div>
-  <br style="height: 20px;">
-  <div id="laetud" class="prosa">
-    <h1 class="tehtud" data-value="teenistusest läbitud">teenistusest läbitud</h1>
-    <p id="protsente"></p>
+  
+  <div class="mt-lg">
+    <div id="loaded">
+      <h1 class="progress-text" data-value="teenistusest läbitud">teenistusest läbitud</h1>
+      <p id="percentageComplete"></p>
+    </div>
   </div>
 </div>
 
-<!-- partial -->
-  <script  src="/js/kv-reserviloendur.js"></script>
-
+  <script src="js/kv-reserviloendur.js"></script>
 </body>
 </html>

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="et">
 <head>
-  <title>Roulette Wheel</title>
-  <link rel="stylesheet" href="/css/empire-rulett.css">
-  <link rel="stylesheet" href="/js/empire-rulett.js">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empire Rulett - 1466</title>
+  <meta name="description" content="Interaktiivne rulett Empire valiku jaoks - 1466 digitaalne kogemus">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
+<body class="empire-page">
 
   <div class="grid-container" id="ylemine">
-    <div class="item1"><img src="images/lennuk.webp" style="width: 100%;"></img></div>
-    <div class="item2"><img src="images/hand-heart.webp" style="width: 100%;"></img></div>
+    <div class="item1"><img src="images/lennuk.webp" alt="Lennuk pilt" class="full-width-image"></div>
+    <div class="item2"><img src="images/hand-heart.webp" alt="Käsi südamega" class="full-width-image"></div>
     <div class="item3">
       <div>
         <h1><i>"Kell on kaheksa, <br> Miks ma olen kaine?"</i></h1>
@@ -22,26 +24,28 @@
 
   </div>
 
-<center class="grid-container" id="footer">
+<div class="grid-container" id="footer">
   <div class="item5">
-    <a id="spin" id="source-link" style="bottom: 60px;" class="meta-link" target="_blank">
-      <span>Keeruta</span> </a>
+    <button id="spin" class="meta-link">
+      <span>Keeruta</span>
+    </button>
   </div>
 
   <div class="item6">
-    <a id="toggleBtn" class="meta-link">
-      <span>SWICH TO MONSTER</span> </a>
+    <button id="toggleBtn" class="meta-link">
+      <span>SWITCH TO MONSTER</span>
+    </button>
   </div>
 
   <div class="item7">
-    <a class="meta-link" href="/index.html">
+    <a class="meta-link" href="index.html">
       <span>menüü</span> </a>
   </div>  
-</center>
-<ul id="optionsList" style="display: none;"></ul>
+</div>
+<ul id="optionsList" class="hidden-options-list"></ul>
 
 
 
-<script  src="/js/empire-rulett.js"></script>
+<script src="js/empire-rulett.js"></script>
 </body>
 </html>
