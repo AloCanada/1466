@@ -612,28 +612,26 @@
   max-width: 1400px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(10, 10, 20, 0.3); /* Much more transparent */
-  backdrop-filter: blur(8px); /* Less blur */
+  background: transparent; /* Completely transparent */
+  backdrop-filter: none; /* Remove blur */
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-xl);
-  border: 1px solid rgba(255, 61, 206, 0.15); /* More subtle border */
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.2), /* Lighter shadow */
-    inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Subtle inner highlight */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
 }
 
 .video-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 61, 206, 0.6) 50%, 
-    transparent 100%);
-  box-shadow: 0 0 20px rgba(255, 61, 206, 0.3);
+  display: none; /* Remove the top border glow */
+}
+
+/* Keep header visible but subtle */
+.video-container header {
+  background: transparent; /* Remove background */
+  backdrop-filter: none; /* Remove blur */
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  border: none; /* Remove border */
 }
 
 /* Fix Vimeo embed aspect ratio */
@@ -675,25 +673,33 @@
   height: 200px !important;
 }
 
-/* Make video cards even more transparent */
+/* Make video cards even more transparent and increase spacing */
 .video-card {
-  background: rgba(15, 15, 30, 0.4); /* More transparent */
-  backdrop-filter: blur(6px); /* Less blur */
+  background: rgba(15, 15, 30, 0.2); /* Much lighter - from 0.4 to 0.2 */
+  backdrop-filter: blur(4px); /* Less blur for more transparency */
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-lg);
-  border: 1px solid rgba(255, 61, 206, 0.2);
+  border: 1px solid rgba(255, 61, 206, 0.15); /* Lighter border */
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
 
 .video-card:hover {
-  background: rgba(15, 15, 30, 0.6); /* Slightly more opaque on hover */
+  background: rgba(15, 15, 30, 0.4); /* Lighter hover state - from 0.6 to 0.4 */
   transform: translateY(-8px);
-  border-color: rgba(255, 61, 206, 0.4);
+  border-color: rgba(255, 61, 206, 0.3);
   box-shadow: 
-    0 15px 40px rgba(255, 61, 206, 0.15),
-    0 5px 20px rgba(0, 0, 0, 0.3);
+    0 15px 40px rgba(255, 61, 206, 0.1),
+    0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Increase vertical spacing between video cards */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-xxl); /* Increased from var(--spacing-lg) to var(--spacing-xxl) */
+  margin: var(--spacing-xl) 0;
 }
 
 /* Add floating particles effect */
@@ -923,5 +929,133 @@
   
   .construction-gif {
     max-width: 200px;
+  }
+}
+
+/* Responsive grid with more columns on desktop - RESTORED */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Back to auto-fit */
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+/* Remove the manual breakpoint rules */
+/* @media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1200px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1600px) {
+  .video-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+} */
+
+/* Make video titles smaller */
+.video-subtitle {
+  font-size: var(--font-size-h5); /* Smaller than default h3 size */
+  margin: var(--spacing-sm) 0;
+  color: var(--color-text-white);
+  font-weight: 600;
+}
+
+/* If you want even smaller titles */
+.video-title {
+  font-size: var(--font-size-h6); /* Even smaller option */
+  margin: var(--spacing-sm) 0;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Make main video page title bigger */
+.video-title {
+  font-size: var(--font-size-h1); /* Use largest heading size */
+  margin: var(--spacing-lg) 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Alternative - if you want it even bigger */
+.video-title {
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive large size */
+  margin: var(--spacing-lg) 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 61, 206, 0.3);
+}
+
+/* ==========================================
+   GLOBAL COPYRIGHT FOOTER
+   ========================================== */
+
+/* Global copyright footer for all pages */
+.copyright-footer {
+  position: static; /* Changed from fixed to static */
+  bottom: auto;
+  left: auto;
+  right: auto;
+  background: transparent; /* Remove background */
+  backdrop-filter: none; /* Remove blur */
+  border-top: none; /* Remove border */
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  text-align: center;
+  z-index: auto;
+  margin-top: var(--spacing-xl); /* Add some space above */
+}
+
+.copyright-text {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4); /* Lighter since no background */
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.copyright-text .company-name {
+  color: rgba(255, 61, 206, 0.6); /* Slightly lighter */
+  font-weight: 500;
+}
+
+/* Remove page padding adjustments since footer is no longer fixed */
+.index-page,
+.video-page,
+.empire-page,
+.kv-page,
+.cursor-page,
+.welcome-page,
+.lamp-page,
+.construction-page {
+  padding-bottom: 0; /* Remove extra padding */
+}
+
+/* Remove height adjustments */
+.kv-page,
+.cursor-page,
+.welcome-page {
+  height: 100vh; /* Back to full height */
+}
+
+/* Hide on very small screens to prevent content overlap */
+@media (max-width: 320px) {
+  .copyright-footer {
+    font-size: 9px;
+    padding: 4px 8px;
   }
 }
