@@ -638,96 +638,132 @@
 .video-embed iframe[src*="vimeo"] {
   width: 100% !important;
   height: auto !important;
-  aspect-ratio: 16/9 !important; /* Force proper aspect ratio */
-  max-height: 315px; /* Same as YouTube */
+  aspect-ratio: 16/9 !important;
+  max-height: 315px;
 }
 
-/* Ensure all video embeds have consistent sizing */
+/* Video embed container - unified sizing */
 .video-embed {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
   border-radius: var(--border-radius-md);
   overflow: hidden;
   margin-bottom: var(--spacing-md);
+  background: rgba(30, 30, 50, 0.3);
 }
 
 .video-embed iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   border: none;
   border-radius: var(--border-radius-md);
 }
 
-/* SoundCloud keeps its own height */
+/* SoundCloud - match YouTube height with padding-top */
 .soundcloud-embed {
-  aspect-ratio: unset; /* Remove aspect ratio for SoundCloud */
-  height: 200px; /* Fixed height as you requested earlier */
+  padding-top: 0 !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important; /* Same as YouTube/Vimeo */
 }
 
 .soundcloud-embed iframe {
-  position: static; /* SoundCloud needs different positioning */
-  height: 200px !important;
+  position: absolute !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  border: none;
+  border-radius: var(--border-radius-md);
 }
 
-/* Make video cards even more transparent and increase spacing */
-.video-card {
-  background: rgba(15, 15, 30, 0.2); /* Much lighter - from 0.4 to 0.2 */
-  backdrop-filter: blur(4px); /* Less blur for more transparency */
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid rgba(255, 61, 206, 0.15); /* Lighter border */
-  transition: all var(--transition-normal);
-  position: relative;
-  overflow: hidden;
-}
-
-.video-card:hover {
-  background: rgba(15, 15, 30, 0.4); /* Lighter hover state - from 0.6 to 0.4 */
-  transform: translateY(-8px);
-  border-color: rgba(255, 61, 206, 0.3);
-  box-shadow: 
-    0 15px 40px rgba(255, 61, 206, 0.1),
-    0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Increase vertical spacing between video cards */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--spacing-xxl); /* Increased from var(--spacing-lg) to var(--spacing-xxl) */
-  margin: var(--spacing-xl) 0;
-}
-
-/* Add floating particles effect */
-.video-page::after {
-  content: '';
-  position: fixed;
+/* Video placeholder styling - fills container */
+.video-placeholder {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(255, 61, 206, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(138, 43, 226, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 50% 10%, rgba(255, 61, 206, 0.06) 1.5px, transparent 1.5px),
-    radial-gradient(circle at 10% 90%, rgba(138, 43, 226, 0.05) 2px, transparent 2px);
-  background-size: 300px 300px, 250px 250px, 400px 400px, 350px 350px;
-  animation: floatingParticles 25s linear infinite;
-  pointer-events: none;
-  z-index: -1;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 30, 50, 0.5);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  padding: var(--spacing-lg);
+  opacity: 1;
+  z-index: 10;
 }
 
-@keyframes floatingParticles {
-  0% {
-    transform: translateY(0) rotate(0deg);
+.video-placeholder:hover {
+  background: rgba(40, 40, 60, 0.7);
+}
+
+.video-placeholder .play-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.video-placeholder:hover .play-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.video-placeholder p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin: 0;
+}
+
+/* Loading state */
+.video-embed.loading .video-placeholder {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Loaded state - placeholder fades out */
+.video-embed.loaded .video-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Iframe fades in smoothly */
+.video-embed.loaded iframe {
+  animation: fadeIn 0.5s ease;
+  z-index: 5;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.98);
   }
-  100% {
-    transform: translateY(-100px) rotate(360deg);
+  to { 
+    opacity: 1;
+    transform: scale(1);
   }
+}
+
+/* SoundCloud placeholder - adjusted icon size */
+.soundcloud-embed .video-placeholder .play-icon {
+  width: 60px;
+  height: 60px;
+}
+
+/* Prevent layout shift during video load */
+.video-embed {
+  position: relative;
+  overflow: hidden;
 }
 
 /* ==========================================
@@ -1058,4 +1094,91 @@
     font-size: 9px;
     padding: 4px 8px;
   }
+}
+
+/* Video placeholder styling */
+.video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 30, 50, 0.5);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  padding: var(--spacing-lg);
+  opacity: 1;
+  z-index: 10;
+}
+
+.video-placeholder:hover {
+  background: rgba(40, 40, 60, 0.7);
+  transform: scale(1.02);
+}
+
+.video-placeholder .play-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.video-placeholder:hover .play-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.video-placeholder p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin: 0;
+}
+
+/* Loading state */
+.video-embed.loading .video-placeholder {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Loaded state - placeholder fades out */
+.video-embed.loaded .video-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Iframe fades in smoothly */
+.video-embed.loaded iframe {
+  animation: fadeIn 0.5s ease;
+  z-index: 5;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* SoundCloud placeholder - adjusted icon size */
+.soundcloud-embed .video-placeholder .play-icon {
+  width: 60px;
+  height: 60px;
+}
+
+/* Prevent layout shift during video load */
+.video-embed {
+  position: relative;
+  overflow: hidden;
 }

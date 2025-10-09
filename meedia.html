@@ -5,92 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1466 - MEEDIA</title>
     <meta name="description" content="1466 meediakollektsioon - videod, muusika ja loominguline sisu">
-    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>  
-    <link rel="stylesheet" href="css/pages.css">
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
+    <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+    <link rel="preconnect" href="https://widget.sndcdn.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Inline critical CSS -->
+    <style>
+        /* Critical above-the-fold CSS */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .video-page { 
+            min-height: 100vh; 
+            background: #0a0a0a;
+            padding: 20px;
+        }
+        .video-title { 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            color: #ff3dce;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        @media (min-width: 768px) {
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+    </style>
+    
+    <!-- Defer Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href='https://fonts.googleapis.com/css?family=Comfortaa&display=swap' rel='stylesheet'></noscript>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="preload" href="css/pages.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/pages.css"></noscript>
 </head>
 <body class="video-page">
     <div class="video-container">
         <header>
             <h1 class="video-title">Meedia</h1>
-            <div class="video-controls">
-                <button id="sortByDate" class="sort-btn meta-link">
-                    <span>sorteeri kuupäeva järgi</span>
-                </button>
-                <button id="sortByTitle" class="sort-btn meta-link">
-                    <span>sorteeri pealkirja järgi</span>
-                </button>
-                <br>
-                <a class="sort-btn meta-link" href="index.html">
-                    <span>menüü</span>
-                </a>
-            </div>
+            <!-- Removed sorting buttons -->
         </header>
         
         <section class="video-grid" id="videoContainer">
-            <!-- PIONEERIPATALJONI Video with YouTube embed -->
-            <div class="video-card" data-date="2024-04-15" data-title="Pioneeripataljoni välikindlustamine - aprill 2024">
-                <div class="video-meta">
-                    <span class="video-date">15. aprill 2024</span>
-                    <span class="video-platform">YouTube</span>
-                </div>
-                <div class="video-embed">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AKp0sugeElk?si=BS0qvymwRdcUdITL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <h3 class="video-subtitle">Pioneeripat. väli-kindlustamine</h3>
-                <p class="video-description">StR 2024<br><br>Edu reservis!!</p>
-            </div>
-
-            <!-- VOLVOGA KELGUTAMINE Video with YouTube embed -->
-            <div class="video-card" data-date="2024-02-20" data-title="VOLVOGA KELGUTAMINE">
-                <div class="video-meta">
-                    <span class="video-date">20. veebruar 2024</span>
-                    <span class="video-platform">YouTube</span>
-                </div>
-                <div class="video-embed">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Owa-KQYczaM?si=ci0Rx5W8dFb0EVIB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <h3 class="video-subtitle">VOLVOGA KELGUTAMINE</h3>
-                <p class="video-description">Kiire kokkuvõte oleks siis, et me otsustasime vastlapäeval autodega kelgutama minna.. <br><br>Aaa jaaa mu GPU reaalselt annab otsad. Premiere pro succkib nii minu kui ka mu arvuti varbaid JA SEE EI OLE MEELDIV. Aitäh vaatamast!</p>
-            </div>
-
-            <!-- SoundCloud Track -->
-            <div class="video-card" data-date="2023-07-23" data-title="Issi Lofy - nublu (romantilisem)">
-                <div class="video-meta">
-                    <span class="video-date">22. juuni 2023</span>
-                    <span class="video-platform">SoundCloud</span>
-                </div>
-                <div class="video-embed soundcloud-embed">
-                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1564832398&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                    <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/alo-lohmus" title="lil_Allar" target="_blank" style="color: #cccccc; text-decoration: none;">lil_Allar</a> · <a href="https://soundcloud.com/alo-lohmus/issi-lofy-nublu" title="Issi Lofy - nublu (natukene romantilisem kui originaal)" target="_blank" style="color: #cccccc; text-decoration: none;">Issi Lofy - nublu (natukene romantilisem kui originaal)</a></div>
-                </div>
-                <h3 class="video-subtitle">Issi Lofy - nublu</h3>
-                <p class="video-description">lil_Allar uusim remix/singel - Issi romantilisem Lofi versioon!</p>
-            </div> 
-
-            <!-- Märdi auto Video with YouTube embed -->
+            <!-- Märdi mobo kiletamine -->
             <div class="video-card" data-date="2022-09-03" data-title="Märdi mobo kiletamine">
                 <div class="video-meta">
                     <span class="video-date">3. september 2022</span>
                     <span class="video-platform">YouTube</span>
                 </div>
-                <div class="video-embed">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/y-80CBdSj18?si=_Bv_NwbfbN8B36bD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-embed" 
+                     data-src="https://www.youtube.com/embed/y-80CBdSj18?si=_Bv_NwbfbN8B36bD" 
+                     data-type="youtube">
+                    <!-- Placeholder -->
+                    <div class="video-placeholder">
+                        <svg class="play-icon" viewBox="0 0 68 48" fill="none">
+                            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/>
+                            <path d="M45 24L27 14v20" fill="#fff"/>
+                        </svg>
+                        <p>Vajuta videole laadimiseks</p>
+                    </div>
                 </div>
                 <h3 class="video-subtitle">Märdi mobo kiletamine</h3>
-                <p class="video-description">Igastahes, mul on kanalil üks strike ja kahe strikega kustutakse see kanal ära. Ma reaalselt palvetan, et ma ei saaks Märdi reaktsooni pärast banni.<br>AItäh kiletajatele!<br>Video valmis tänu suursponsorile ALO LILLEPOOD OÜ</p>
+                <p class="video-description">Proovisin esimest korda ise autot kiletada. See polnud lihtne, aga tulemus polnud ka halb, mitte selline mis peaks olema aga ikkagi... Kasutatd kile: Nardo Grey - 3M 2080-G53. RLM Mustamäel saab ka osta.</p>
             </div>
 
-            <!-- SOOME1 Video with Vimeo embed -->
+            <!-- SOOME1 Video -->
             <div class="video-card" data-date="2021-12-09" data-title="lil mäll x lil allar - SOOME1">
                 <div class="video-meta">
                     <span class="video-date">9. detsember 2021</span>
                     <span class="video-platform">Vimeo</span>
                 </div>
-                <div class="video-embed">
-                    <iframe src="https://player.vimeo.com/video/888468180?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="960" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="SOOME1"></iframe>
+                <div class="video-embed" 
+                     data-src="https://player.vimeo.com/video/888468180?badge=0&autopause=0&player_id=0&app_id=58479" 
+                     data-type="vimeo">
+                    <div class="video-placeholder">
+                        <svg class="play-icon" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="48" stroke="#00adef" stroke-width="4" fill="none"/>
+                            <path d="M40 30 L70 50 L40 70 Z" fill="#00adef"/>
+                        </svg>
+                        <p>Vajuta videole laadimiseks</p>
+                    </div>
                 </div>
                 <h3 class="video-subtitle">lil mäll x lil allar - SOOME1</h3>
                 <p class="video-description">TÄNAME: B-roll ja muidu ka muhe seltskond: Aron Kelder (aka motika tüüp), Helen Jakob (aka koerte omnik), Joonas Adami (aka karvane), Marten Käis Soome1 filmimas, Märt Chad Veri, Pauli i ne Ainso, Kerti Kala (roosade juustega)</p>
+            </div>
+
+            <!-- VOLVOGA KELGUTAMINE -->
+            <div class="video-card" data-date="2024-02-20" data-title="VOLVOGA KELGUTAMINE - Vastlapäev">
+                <div class="video-meta">
+                    <span class="video-date">20. veebruar 2024</span>
+                    <span class="video-platform">YouTube</span>
+                </div>
+                <div class="video-embed" 
+                     data-src="https://www.youtube.com/embed/Owa-KQYczaM?si=ci0Rx5W8dFb0EVIB" 
+                     data-type="youtube">
+                    <div class="video-placeholder">
+                        <svg class="play-icon" viewBox="0 0 68 48" fill="none">
+                            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/>
+                            <path d="M45 24L27 14v20" fill="#fff"/>
+                        </svg>
+                        <p>Vajuta videole laadimiseks</p>
+                    </div>
+                </div>
+                <h3 class="video-subtitle">VOLVOGA KELGUTAMINE - [Vastlapäev ei saa enam hullemaks minna!]</h3>
+                <p class="video-description">Ma ei viitsinud seekord mingit ägedat discriptioni kirjutada, aga kiire kokkuvõte oleks siis, et me otsustasime vastlapäeval autodega kelgutama minna.. Aaa jaaa mu GPU reaalselt annab otsad. Premiere pro succkib nii minu kui ka mu arvuti varbaid JA SEE EI OLE MEELDIV. Aitäh vaatamast!</p>
+            </div>
+
+            <!-- Pioneeripataljoni -->
+            <div class="video-card" data-date="2024-04-15" data-title="Pioneeripataljoni välikindlustamine">
+                <div class="video-meta">
+                    <span class="video-date">15. aprill 2024</span>
+                    <span class="video-platform">YouTube</span>
+                </div>
+                <div class="video-embed" 
+                     data-src="https://www.youtube.com/embed/AKp0sugeElk?si=BS0qvymwRdcUdITL" 
+                     data-type="youtube">
+                    <div class="video-placeholder">
+                        <svg class="play-icon" viewBox="0 0 68 48" fill="none">
+                            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/>
+                            <path d="M45 24L27 14v20" fill="#fff"/>
+                        </svg>
+                        <p>Vajuta videole laadimiseks</p>
+                    </div>
+                </div>
+                <h3 class="video-subtitle">Pioneeripataljoni välikindlustamine - aprill 2024</h3>
+                <p class="video-description">StR 2024<br><br>Edu reservis!!</p>
+            </div>
+
+            <!-- SoundCloud Track -->
+            <div class="video-card" data-date="2024-09-26" data-title="Issi Lofy - nublu">
+                <div class="video-meta">
+                    <span class="video-date">26. september 2024</span>
+                    <span class="video-platform">SoundCloud</span>
+                </div>
+                <div class="video-embed soundcloud-embed" 
+                     data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1564832398&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" 
+                     data-type="soundcloud">
+                    <div class="video-placeholder">
+                        <svg class="play-icon" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="45" fill="#ff5500" opacity="0.2"/>
+                            <path d="M40 30 L70 50 L40 70 Z" fill="#ff5500"/>
+                        </svg>
+                        <p>Vajuta muusika laadimiseks</p>
+                    </div>
+                </div>
+                <h3 class="video-subtitle">Issi Lofy - nublu (natukene romantilisem kui originaal)</h3>
+                <p class="video-description">lil_Allar uusim singel - Issi Lofy coveri romantilisem versioon. Kuula meie unikaalset lähenemist sellele klassikale!</p>
             </div>
         </section>
     </div>
@@ -99,10 +176,11 @@
     <div class="copyright-footer">
         <p class="copyright-text">
             © 2025 <span class="company-name">Alomon OÜ</span> & <span class="company-name">Alo Lileepood OÜ</span> 
-            | All rights reserved | 1466 - Digital Portfolio
+            | All rights reserved | 1466 Portfolio
         </p>
     </div>
 
-    <script src="js/video-sort.js"></script>
+    <!-- Defer JavaScript - removed video-sort.js -->
+    <script src="js/lazy-load-videos.js" defer></script>
 </body>
 </html>
