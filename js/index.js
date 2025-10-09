@@ -1,62 +1,31 @@
 /**
- * Navigation Text Scramble Effect
- * Creates a hacker-style text scrambling animation on navigation links
+ * Page Load Text Scramble Effect
+ * Creates a hacker-style text scrambling animation on page load
  */
 
 // Configuration constants
 const CONFIG = {
   MOBILE_BREAKPOINT: 720,
-  ANIMATION_SPEED: 15, // milliseconds
-  ITERATION_INCREMENT: 1 / 3,
+  ANIMATION_SPEED: 50, // milliseconds (increased from 15)
+  ITERATION_INCREMENT: 1 / 3, // decreased from 1/3 to make it slower
   ALPHABET: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 };
 
 /**
- * Initialize the navigation text scramble effect
- */
-function initializeNavigation() {
-  const navigationLinks = document.querySelectorAll('.meta-link span');
-  
-  navigationLinks.forEach(link => {
-    setupTextScrambleEffect(link);
-  });
-}
-
-/**
- * Setup text scramble effect for a navigation link
- * @param {HTMLElement} linkElement - The navigation link element
- */
-function setupTextScrambleEffect(linkElement) {
-  let animationInterval = null;
-  
-  linkElement.addEventListener('mouseenter', (event) => {
-    handleTextScramble(event.target, animationInterval);
-  });
-  
-  linkElement.addEventListener('mouseleave', () => {
-    clearInterval(animationInterval);
-  });
-}
-
-/**
  * Handle the text scrambling animation
  * @param {HTMLElement} target - The target element to animate
- * @param {number} currentInterval - Current animation interval ID
  */
-function handleTextScramble(target, currentInterval) {
-  const originalText = target.dataset.value;
+function scrambleText(target) {
+  const originalText = target.dataset.value || target.textContent;
   
   if (!originalText) {
-    console.warn('Navigation link missing data-value attribute:', target);
+    console.warn('Element missing text content:', target);
     return;
   }
   
   let iteration = 0;
   
-  // Clear any existing animation
-  clearInterval(currentInterval);
-  
-  currentInterval = setInterval(() => {
+  const animationInterval = setInterval(() => {
     // Generate scrambled text
     const scrambledText = originalText
       .split("")
@@ -74,7 +43,7 @@ function handleTextScramble(target, currentInterval) {
     
     // Complete animation when all letters are revealed
     if (iteration >= originalText.length) {
-      clearInterval(currentInterval);
+      clearInterval(animationInterval);
     }
     
     iteration += CONFIG.ITERATION_INCREMENT;
@@ -82,11 +51,42 @@ function handleTextScramble(target, currentInterval) {
 }
 
 /**
+ * Initialize one-time page load animations
+ */
+function initPageLoadAnimations() {
+  const elementsToAnimate = [
+    { selector: '#main-title', delay: 0 },
+    { selector: '#main-projects-title', delay: 300 },
+    { selector: '.footer-link span', delay: 600, sequential: true }
+  ];
+
+  elementsToAnimate.forEach(({ selector, delay, sequential }) => {
+    setTimeout(() => {
+      const elements = document.querySelectorAll(selector);
+      
+      if (sequential) {
+        // For footer links: animate from left to right with stagger
+        elements.forEach((element, index) => {
+          const elementDelay = index * 300; // 200ms between each footer link
+          setTimeout(() => {
+            scrambleText(element);
+          }, elementDelay);
+        });
+      } else {
+        // For single elements: animate immediately
+        elements.forEach((element) => {
+          scrambleText(element);
+        });
+      }
+    }, delay);
+  });
+}
+
+/**
  * Apply mobile-specific adjustments
  */
 function handleMobileAdjustments() {
   if (window.innerWidth < CONFIG.MOBILE_BREAKPOINT) {
-    // Mobile-specific adjustments can be added here
     document.body.classList.add('mobile-layout');
   } else {
     document.body.classList.remove('mobile-layout');
@@ -98,14 +98,13 @@ function handleMobileAdjustments() {
  */
 function init() {
   try {
-    initializeNavigation();
     handleMobileAdjustments();
     
     // Add resize listener for responsive behavior
     window.addEventListener('resize', handleMobileAdjustments);
     
   } catch (error) {
-    console.error('Error initializing navigation:', error);
+    console.error('Error initializing page:', error);
   }
 }
 
@@ -115,3 +114,10 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+// Initialize animations when page is fully loaded
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    initPageLoadAnimations();
+  }, 500); // Wait 500ms after page load to ensure everything is rendered
+});

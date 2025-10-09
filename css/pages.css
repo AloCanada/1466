@@ -562,73 +562,96 @@
 .video-page {
   min-height: 100vh;
   padding: var(--spacing-lg);
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  background: 
+    /* Animated mesh gradient */
+    radial-gradient(circle at 20% 50%, rgba(255, 61, 206, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(75, 0, 130, 0.1) 0%, transparent 50%),
+    /* Moving grid pattern */
+    linear-gradient(90deg, rgba(255, 61, 206, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 61, 206, 0.05) 1px, transparent 1px),
+    /* Base gradient */
+    linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #1a1a2e 25%, 
+      #16213e 50%, 
+      #1a1a2e 75%, 
+      #0f0f0f 100%);
+  background-size: 
+    800px 800px,
+    600px 600px, 
+    700px 700px,
+    40px 40px,
+    40px 40px,
+    400% 400%;
+  animation: 
+    gradientShift 20s ease infinite,
+    gridMove 15s linear infinite;
 }
 
+@keyframes gradientShift {
+  0%, 100% { 
+    background-position: 0% 50%, 100% 20%, 0% 80%, 0 0, 0 0, 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%, 0% 20%, 100% 80%, 20px 20px, 20px 20px, 100% 50%; 
+  }
+}
+
+@keyframes gridMove {
+  0% { 
+    background-position: 0% 50%, 100% 20%, 0% 80%, 0 0, 0 0, 0% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%, 100% 20%, 0% 80%, 40px 40px, 40px 40px, 0% 50%; 
+  }
+}
+
+/* Enhanced video container with better contrast */
 .video-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   text-align: center;
-}
-
-.video-title {
-  font-size: var(--font-size-h1);
-  font-family: var(--font-family-display);
-  color: var(--color-primary-solid);
-  margin-bottom: var(--spacing-xl);
-}
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
-  margin: var(--spacing-xl) 0;
-}
-
-.video-card {
-  background-color: var(--color-bg-glass);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 20, 0.3); /* Much more transparent */
+  backdrop-filter: blur(8px); /* Less blur */
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all var(--transition-normal);
+  padding: var(--spacing-xl);
+  border: 1px solid rgba(255, 61, 206, 0.15); /* More subtle border */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2), /* Lighter shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Subtle inner highlight */
 }
 
-.video-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-accent);
-  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+.video-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 61, 206, 0.6) 50%, 
+    transparent 100%);
+  box-shadow: 0 0 20px rgba(255, 61, 206, 0.3);
 }
 
-.video-thumbnail {
-  width: 100%;
-  border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-md);
+/* Fix Vimeo embed aspect ratio */
+.video-embed iframe[src*="vimeo"] {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important; /* Force proper aspect ratio */
+  max-height: 315px; /* Same as YouTube */
 }
 
-.video-subtitle {
-  font-size: var(--font-size-h4);
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-sm);
-}
-
-.video-description {
-  font-size: var(--font-size-base);
-  line-height: 1.6;
-}
-
-.video-showcase {
-  margin: var(--spacing-xl) 0;
-}
-
+/* Ensure all video embeds have consistent sizing */
 .video-embed {
   position: relative;
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  margin-bottom: var(--spacing-md);
-  border-radius: var(--border-radius);
+  aspect-ratio: 16/9;
+  border-radius: var(--border-radius-md);
   overflow: hidden;
+  margin-bottom: var(--spacing-md);
 }
 
 .video-embed iframe {
@@ -637,69 +660,68 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: var(--border-radius);
+  border: none;
+  border-radius: var(--border-radius-md);
 }
 
-/* SoundCloud specific styling */
+/* SoundCloud keeps its own height */
 .soundcloud-embed {
-  padding-bottom: 0; /* Remove aspect ratio for SoundCloud */
-  height: auto;
+  aspect-ratio: unset; /* Remove aspect ratio for SoundCloud */
+  height: 200px; /* Fixed height as you requested earlier */
 }
 
 .soundcloud-embed iframe {
-  position: relative;
-  height: 300px; /* Fixed height for SoundCloud */
+  position: static; /* SoundCloud needs different positioning */
+  height: 200px !important;
 }
 
-.video-controls {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  margin-bottom: var(--spacing-lg);
-  flex-wrap: wrap;
-}
-
-.sort-btn {
-  padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--border-radius);
+/* Make video cards even more transparent */
+.video-card {
+  background: rgba(15, 15, 30, 0.4); /* More transparent */
+  backdrop-filter: blur(6px); /* Less blur */
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid rgba(255, 61, 206, 0.2);
   transition: all var(--transition-normal);
-  font-size: var(--font-size-sm);
+  position: relative;
+  overflow: hidden;
 }
 
-.sort-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--color-accent);
+.video-card:hover {
+  background: rgba(15, 15, 30, 0.6); /* Slightly more opaque on hover */
+  transform: translateY(-8px);
+  border-color: rgba(255, 61, 206, 0.4);
+  box-shadow: 
+    0 15px 40px rgba(255, 61, 206, 0.15),
+    0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-.sort-btn.active-sort {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-bg-primary);
+/* Add floating particles effect */
+.video-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 61, 206, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(138, 43, 226, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 10%, rgba(255, 61, 206, 0.06) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 10% 90%, rgba(138, 43, 226, 0.05) 2px, transparent 2px);
+  background-size: 300px 300px, 250px 250px, 400px 400px, 350px 350px;
+  animation: floatingParticles 25s linear infinite;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.video-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-sm);
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-}
-
-.video-date {
-  color: var(--color-accent);
-  font-weight: 500;
-}
-
-.video-platform {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 600;
+@keyframes floatingParticles {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
 }
 
 /* ==========================================
